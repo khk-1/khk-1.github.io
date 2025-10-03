@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Course Countdowns</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+    }
+    h1 {
+      margin-top: 20px;
+      font-size: 40px;
+      text-shadow: 2px 2px 5px black;
+    }
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 350px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffda79;
+    }
+    .time {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Exam Countdowns 🎓</h1>
+
+  <div class="countdown-box">
+    <div class="title">CS383 (Oct 13)</div>
+    <div id="oct13" class="time"></div>
+  </div>
+
+  <div class="countdown-box">
+    <div class="title">IT214 (Oct 14)</div>
+    <div id="oct14" class="time"></div>
+  </div>
+
+  <div class="countdown-box">
+    <div class="title">IT332 (Oct 15)</div>
+    <div id="oct15" class="time"></div>
+  </div>
+
+  <div class="countdown-box">
+    <div class="title">IT361 (Oct 16)</div>
+    <div id="oct16" class="time"></div>
+  </div>
+
+  <div class="countdown-box">
+    <div class="title">CS214 (Oct 19)</div>
+    <div id="oct19" class="time"></div>
+  </div>
+
+  <script>
+    function createCountdown(id, targetDate) {
+      var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = targetDate - now;
+
+        if (distance < 0) {
+          document.getElementById(id).innerHTML = "✅ Exam Passed!";
+          clearInterval(x);
+          return;
+        }
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById(id).innerHTML =
+          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      }, 1000);
+    }
+
+    // Set countdowns for October 2025
+    createCountdown("oct13", new Date("Oct 13, 2025 00:00:00").getTime());
+    createCountdown("oct14", new Date("Oct 14, 2025 00:00:00").getTime());
+    createCountdown("oct15", new Date("Oct 15, 2025 00:00:00").getTime());
+    createCountdown("oct16", new Date("Oct 16, 2025 00:00:00").getTime());
+    createCountdown("oct19", new Date("Oct 19, 2025 00:00:00").getTime());
+  </script>
+</body>
+</html>
+
+
+
